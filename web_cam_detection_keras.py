@@ -88,7 +88,14 @@ maskNet = load_model('models/face_detection_mobilenetv2')
 
 # initialize the video stream and allow the camera sensor to warm up
 print("[INFO] starting video stream...")
-vs = VideoStream(src=0,framerate=30).start()
+#vs = VideoStream(src=0,framerate=30).start()
+
+vs = VideoStream(src="nvarguscamerasrc ! video/x-raw(memory:NVMM), " \
+	"width=(int)1920, height=(int)1080,format=(string)NV12, " \
+	"framerate=(fraction)30/1 ! nvvidconv ! video/x-raw, " \
+	"format=(string)BGRx ! videoconvert ! video/x-raw, " \
+	"format=(string)BGR ! appsink").start()
+time.sleep(2.0)
 
 #video = cv2.VideoCapture("videos/20201214_145111.mp4")
 
