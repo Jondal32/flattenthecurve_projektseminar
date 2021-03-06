@@ -162,7 +162,7 @@ while True:
 
             if no_face_mask_detected_counter > 25:
                 cv2.putText(frame, "Achtung bitte eine Maske tragen", (10, 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
-                alert = True
+                alert = False
                 no_face_mask_detected_counter -= 2
         else:
             alert = False
